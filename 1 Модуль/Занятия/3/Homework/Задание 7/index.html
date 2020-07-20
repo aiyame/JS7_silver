@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let firstNumber = Math.floor(Math.random() * 10);
+    let secondNumber = Math.floor(Math.random() * 10);
+
+    let proiz = firstNumber * secondNumber;
+
+    let problem = parseInt(prompt('What is ' + firstNumber + ' * ' + secondNumber + ' = '));
+
+    if (!isNaN(problem)) {
+      if (problem === proiz) {
+        alert('You are correct!');
+      } else {
+        alert('You are wrong!');
+    }
+    } else {
+      alert("You do not enter the answer");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sum = 0;
+        let counter = 0;
+        while (true) {
+            const userNumber = prompt("Enter a number between 1 and 100:");
+            if (userNumber === null) {
+                break;
+            }
+            number = parseInt(userNumber);
+            if (!isNaN(number)) {
+                if (number >=1 && number <=100) {
+                    sum += number;
+                    counter++;
+                }
+            }
+        }
+        alert("You entered " + counter + " numbers\n" + "The arithmetic mean of entered numbers is: " + sum/counter);
+    </script>
+</body>
+</html>

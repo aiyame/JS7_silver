@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let admin = "admin";
+    let password = "BlackOverlord";
+
+    let user = prompt("Enter the username: ");
+
+    if (user === admin) {
+      let pass = prompt("Enter the password: ");
+      if (pass === password) {
+        alert('Welcome!');
+      } else if (pass === null) {
+        alert('Login canceled!');
+      } else {
+        alert('Wrong Password!');
+      }
+    } else if (user === null) {
+      alert("Login canceled");
+    } else {
+      alert("Unknown user");
+    }
+  </script>
+</body>
+
+</html>

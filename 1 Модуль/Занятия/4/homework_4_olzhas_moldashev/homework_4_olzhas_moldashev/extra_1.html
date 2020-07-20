@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userNumber;
+        let num;
+        while (true) {
+            const userAnswer = prompt("Enter a number consisting of an even number of digits");
+            if (userAnswer === null || (userAnswer.length % 2) !== 0)
+                continue;
+            num = userAnswer;
+            userNumber = parseInt(userAnswer);
+            if (!isNaN(userNumber)) {
+                break;
+            }   
+        }
+
+        let halfSum1 = 0;
+        let halfSum2 = 0;
+        for (let i = 0; i < num.length; i++) {
+            if (i < num.length/2) {
+                halfSum1 += parseInt(num[i]);
+            } else {
+                halfSum2 += parseInt(num[i]);
+            }
+        }
+        if (halfSum1 === halfSum2) {
+            alert("In " + userNumber + " the sums of the first and second half of the digits are equal")
+        } else {
+            alert("In " + userNumber + " the sums of the first and second half of the digits are not equal") 
+        }
+    </script>
+</body>
+</html>

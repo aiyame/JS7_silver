@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 4</title>
+</head>
+
+<body>
+  <script>
+    let result = 0;
+    const power = (a, b = 2) => {
+      return a ** b;
+    };
+
+    let firstNumber = parseFloat(prompt("Введите число для возведения в степень "));
+
+    let powerNumber = parseFloat(prompt("Введите степень числа"));
+
+    if (isNaN(firstNumber)) {
+      alert('Вы не ввели число');
+    } else if (isNaN(powerNumber)) {
+      result = power(firstNumber );
+      alert(`Результат возведения числа ${firstNumber}  в степень 2 равна ${result}`);
+    } else {
+       result = power(firstNumber, powerNumber );
+       alert(`Результат возведения числа ${firstNumber} в степень ${powerNumber} равна ${result}`);
+    }
+  </script>
+</body>
+
+</html>

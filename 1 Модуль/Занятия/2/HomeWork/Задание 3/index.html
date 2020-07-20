@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Занятие 2. Задание 3</title>
+</head>
+<body>
+  <script>
+    let drink = prompt("Enter your favorite drink, please");
+
+    drink = drink.toLowerCase();
+
+    switch(drink) {
+      case "beer":
+      case "vodka":
+      case "tequila":
+      case "brendy":
+        alert("Alcohol like " + drink + " abuse is dangerous for your health. ");
+        break;
+      case "coffee":
+      case "tea":
+      case "black tea":
+      case "green tea":
+         alert("This drink contains caffeine. ");
+         break;
+      case "water":
+      case "milk":
+       alert("This drink is good for your health. ");
+       break;
+      default:
+        alert("We do not have this drink in the database, but we must always remember the norm.");
+    }
+
+  </script>
+
+</body>
+</html>

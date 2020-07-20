@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 3</title>
+</head>
+
+<body>
+  <script>
+    let firstNumber = parseFloat(prompt('Введите первое значение'));
+
+    let secondNumber = parseFloat(prompt('Введите второе значение'));
+    let result = 0;
+
+    const multiply = function (firstNumber, secondNumber) {
+      firstNumber
+      return firstNumber * secondNumber;
+    };
+
+    if (isNaN(secondNumber) || isNaN(firstNumber)) {
+      alert('Необходимы оба параметра');
+    } else {
+      result = multiply(firstNumber, secondNumber);
+      alert('Результат умножения ' + result);
+    }
+  </script>
+</body>
+
+</html>

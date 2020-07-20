@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let fullTime = 28800;
+
+    let seconds = parseInt(prompt("Введите секунды от 28000 до 0"));
+
+    if (seconds <= fullTime && seconds >= (fullTime - 1 * 60 * 60)) {
+      alert("Осталось 7 часов");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 2 * 60 * 60)) {
+      alert("Осталось 6 часов");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 3 * 60 * 60)) {
+      alert("Осталось 5 часов");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 4 * 60 * 60)) {
+      alert("Осталось 4 часа");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 5 * 60 * 60)) {
+      alert("Осталось 3 часа");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 6 * 60 * 60)) {
+      alert("Осталось 2 часа");
+    } else if (seconds <= fullTime && seconds >= (fullTime - 7 * 60 * 60)) {
+      alert("Осталось 1 час");
+    } else if (seconds < (fullTime - 1 * 60 * 60) && seconds >= 0) {
+      alert("Осталось менее часа");
+    } else if (isNaN(seconds)) {
+      alert("Нет значения");
+    } else {
+      alert("У вас будет переработка");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+Задание 5
+Написать в текстовом документе, чему равны следующие булевые выражения в JavaScript. Сделать последовательное упрощение к булевым величинам.
+(2 < 3) && (3 > 4) || true
+!true && (!true || 100 != 5 * 5)
+("123" == 123) || ((10 <= 10) && ('' === false))
+Пример выполнения задания
+Задание:
+true && (false || (2 < 3))
+Упрощение:
+true && (false || (2 < 3))
+true && (false || true)
+true && true
+true
+Ответ: true
+
+Задание:
+(2 < 3) && (3 > 4) || true
+Упрощение:
+true && (3 > 4) || true
+true && false || true
+false || true
+true
+Ответ: true
+
+Задание:
+!true && (!true || 100 != 5 * 5)
+Упрощение:
+false && (!true || 100 != 5 * 5)
+false && (false || 100 != 5 * 5)
+false && (false || 100 != 25)
+false && (false || true)
+false && (true)
+false 
+Ответ: false
+
+Задание:
+("123" == 123) || ((10 <= 10) && ('' === false))
+Упрощение:
+true || ((10 <= 10) && ('' === false))
+true || (true && ('' === false))
+true || (true && false)
+true || false
+true
+Ответ: true

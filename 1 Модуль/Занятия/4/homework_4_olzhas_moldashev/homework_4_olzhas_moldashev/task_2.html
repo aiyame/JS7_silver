@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let message = "";
+        while(true) {
+            const userAnswer = prompt("Enter your phrase:");
+            if (userAnswer === null || userAnswer === "") {
+                continue;
+            } else {
+                message = userAnswer;
+                break;
+            }    
+        }
+        let frame = "";
+        for (let i = 0; i < message.length + 4; i++)
+            frame += "*";
+        console.log(frame + "\n* " + message + " *\n" + frame);
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let sign = prompt('Enter one sign: ');
+    let string;
+
+    if (sign.length === 1) {
+      for (i = 1; i < 8; i++) {
+        for (j = 1; j < 21; j++) {
+          string = sign.repeat(j);
+        }
+        console.log(string);
+      } else {
+        alert('Enter only one sign');
+      }
+    }
+  </script>
+</body>
+
+</html>
