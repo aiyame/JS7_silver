@@ -30,6 +30,9 @@
             house: 141,
             flat: 1,
             index: '050000'
+        },
+        about: function() {
+            return 'My name is '+ this.name +'. I\'m ' + this.age + ' years old. I\'m from ' + this.city;
         }
     };
 
@@ -40,15 +43,19 @@
         name: 'Barsik',
         age: 1,
         favoriteMeal: ['milk', 'Wiskas', 'chicken', 'bread'],
-        eatSomeMeal: function(){
-            return this.favoriteMeal;
+        getSomeMeal: function() {
+            return this.favoriteMeal[1] + ', ' + this.favoriteMeal[2];
+        },
+        getSomeDrink: function(){
+            return this.favoriteMeal[0];
         }
+
     };
 
-    alert(`My name is  ${Person.name}. I'm ${Person.age} years old. I' from ${Person.city}.
+    alert(`Hello! ${Person.about()}.
     I like to take picture of my ${Pet.type} - ${Pet.name}
     with my smarthone ${Smartphone.brand} ${Smartphone.model}.
-    My pet like to eat ${Pet.eatSomeMeal()}.
+    My pet like to eat ${Pet.getSomeMeal()}.
     All of us live in ${Person.Address.city}.` );
 
 </script>
