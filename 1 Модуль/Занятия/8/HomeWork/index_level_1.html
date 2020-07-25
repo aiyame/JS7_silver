@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CW1 "Dragon vs. Hero"</title>
+</head>
+<body>
+<script>
+    // основные персонажи
+    var Dragon = {
+        hp: 2000,      // Жизненная энергия
+        defense: 120,  // Защита
+        str: 150,      // Сила
+        weapon: 0,     // Оружие
+        showInfo: function () {
+            return 'Dragon: ' + this.hp + ' HP';
+        },
+        modifyHealth: function (damage) {
+            this.hp -= damage;
+        }
+    };
+
+    var Hero = {
+        hp: 1000,       // Жизненная сила
+        defense: 100,   // Защита
+        str: 120,       // Сила
+        weapon: 250,    // Оружие
+        shield: 150,     // Щит
+        showInfo: function (username){
+            return 'Hero '  + username + ': ' + this.hp + ' HP';
+        }
+
+    };
+    const dragonEmoji = ('・_＋');
+    let welcomeAction = 'Enter the action: 1 - attack';
+    let user = prompt('Enter your name, please: ');
+    alert('Hello, '+ user + '! Welcome to "Dragon vs. Hero" game.');
+    let action = prompt(welcomeAction);
+    const getRamdomInt = (max) => Math.floor(Math.random() * max + 1);
+    const sample = getRamdomInt(100);
+    let damage = 0; // Урон
+
+     while(Dragon.hp > 0){
+        if (action.toLowerCase().trim() === '1' ) {
+            if (sample <= 75) {
+                // урон = сила героя + оружие героя - защита дракона
+                damage = Hero.str + Hero.weapon - Dragon.defense;
+                Dragon.modifyHealth(damage);
+                alert('You attacked Dragon!');
+                alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+            }
+            else {
+                alert('The dragon dodged the weapon. ' + dragonEmoji );
+            }
+            action = prompt(welcomeAction);
+        }
+        else {
+            action = prompt('Did not found that action. Please, '+ welcomeAction);
+        }
+     }
+      alert('You win Dragon! Congratulations!');
+</script>
+</body>
+</html>

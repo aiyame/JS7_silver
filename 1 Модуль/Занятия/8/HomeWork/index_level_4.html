@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CW1 "Dragon vs. Hero"</title>
+</head>
+<body>
+<script>
+    // основные персонажи
+    var Dragon = {
+        hp: 2000,      // Жизненная энергия
+        defense: 120,  // Защита
+        str: 150,      // Сила
+        weapon: 0,     // Оружие
+        showInfo: function () {
+            return 'Dragon: ' + this.hp + ' HP';
+        },
+        modifyHealth: function (damage) {
+            this.hp -= Number(damage);
+        }
+    };
+
+    var Hero = {
+        hp: 1000,       // Жизненная сила
+        defense: 100,   // Защита
+        str: 120,       // Сила
+        weapon: 250,    // Оружие
+        shield: 150,    // Щит
+        isShieldEquipped: false,
+        isDrankPotion: false,
+        showInfo: function (username) {
+            return 'Hero ' + username + ': ' + this.hp + ' HP';
+        },
+        modifyHealth: function (damage) {
+            this.hp -= damage;
+        },
+        equipShield: function () {
+            if (this.isShieldEquipped === false) {
+                this.defense += 50;
+                this.isShieldEquipped = true;
+            }
+        },
+        removeShield: function () {
+            if (this.isShieldEquipped == true) {
+                this.defense -= 50;
+                this.isShieldEquipped = false;
+            }
+        },
+
+    };
+    //  Действия
+    const heroAttack = function (sampleHero) {
+        // урон = сила героя + оружие героя - защита дракона
+        let damage = Hero.str + Hero.weapon - Dragon.defense;
+        Dragon.modifyHealth(damage);
+        alert('You attacked Dragon! ' + 'The possibilty was ' + sampleHero);
+        console.log('You attacked Dragon! ' + 'The possibilty was ' + sampleHero);
+        alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+        console.log(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+    };
+    const heroSleep = function () {
+        alert('Hero sleeps. Dragon prepare his move! ' + dragonEmoji);
+        console.log('Hero sleeps. Dragon prepare his move! ' + dragonEmoji);
+
+    };
+    const heroDefend = function () {
+        Hero.equipShield();
+        alert('You put on a shield (+50). Defense: ' + Hero.defense);
+        console.log('You put on a shield (+50). Defense: ' + Hero.defense);
+    };
+    const heroTakePotion = function () {
+        Hero.isDrankPotion = true;
+        let damage = -500;
+        Hero.modifyHealth(damage);
+        alert('Hero drank a potion (+500).' + ' Hero: ' + Hero.hp + ' HP');
+        console.log('Hero drank a potion (+500).' + ' Hero: ' + Hero.hp + ' HP');
+    };
+
+    const dragonAttack = function (sampleDragon) {
+        // урон = сила дракона + оружие дракона - защита героя
+        let damage = Dragon.str + Dragon.weapon - Hero.defense;
+        Hero.modifyHealth(damage);
+        alert(user + ', Dragon attacked you!' + 'The possibilty was ' + sampleDragon);
+        console.log(user + ', Dragon attacked you!' + 'The possibilty was ' + sampleDragon);
+        alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+        console.log(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+    };
+    const dragonAttackFireBall = function (sampleDragon) {
+        if (Hero.isShieldEquipped === false) {
+            // Урон = сила дракона * 2 (без оружия!)
+            let damage = Dragon.str * 2;
+            Hero.modifyHealth(damage);
+            alert(user + ', Dragon attacked you with fireball!' + 'The possibilty was 50%' + sampleDragon);
+            console.log(user + ', Dragon attacked you with fareball!' + 'The possibilty was 50%' + sampleDragon);
+            alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+            console.log(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+        } else {
+            damage = 0;
+            Hero.modifyHealth(damage);
+            alert(user + ', Dragon attacked you with fireball! But you have shield =) ' + 'The possibilty was ' + sampleDragon);
+            console.log(user + ', Dragon attacked you with fareball! But you have shield =)' + 'The possibilty was ' + sampleDragon);
+            alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+            console.log(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+        }
+    };
+    const dragonSleep = function (sampleDragon) {
+        alert('Dragon sleeps. Use your weapon! ' + heroEmoji + 'The possibilty was ' + sampleDragon);
+        console.log('Dragon sleeps. Use your weapon! ' + heroEmoji + 'The possibilty was ' + sampleDragon);
+    };
+
+    const dragonEmoji = ('=◣_◢=');
+    const heroEmoji = ('ヽ(˘⌣˘)ノ')
+    const welcomeAction = 'Enter the action: 1 - attack, 2 - sleep, 3 - defend, 4 - take a potion: ';
+    const welcomeDragonAction = 'Dragon starts his actions: Attack or Sleep ...';
+    const getRamdomInt = (max) => Math.floor(Math.random() * max + 1); // Получение вероятности
+    let damage = 0; // Урон
+
+    // Приветсвие игры
+    console.log(`
+_|___|____|__|____|____|____|____|______|_
+___|___|____|____|DRAGON|____|____|__|___|__
+_|____|____|____|  vs. |____|____|__|____|_
+___|___|____|____|HERO|____|____|____|___|_
+___|____|____|____|____|____|____|____|____|
+`);
+    let user = prompt('Enter your name, please: ');
+
+    alert('Hello, ' + user + '! Welcome to "Dragon vs. Hero" game.');
+    console.log('Hello, ' + user + '! Welcome to "Dragon vs. Hero" game.');
+
+    let action = prompt(welcomeAction);
+    console.log(welcomeAction + ' ' + action);
+
+    // Действия  игры
+    while (Dragon.hp > 0 && Hero.hp > 0) {
+        action = action.toLowerCase().trim();
+        Hero.removeShield();
+        // console.log('Defense ' + Hero.defense);
+        switch (action) {
+            case '1':
+                const sampleHero = getRamdomInt(100);
+                if (sampleHero <= 75) {
+                    heroAttack(sampleHero);
+                } else {
+                    alert('Ha-ha! You didn\'t hit the dragon.. ' + dragonEmoji + 'The possibilty was ' + sampleHero);
+                    console.log('Ha-ha! You didn\'t hit the dragon. ' + dragonEmoji + 'The possibilty was ' + sampleHero);
+                }
+                break;
+            case '2':
+                heroSleep();
+                // action = prompt(welcomeAction);
+                break;
+            case '3':
+                heroDefend();
+                break;
+            case '4':
+                if (Hero.isDrankPotion === false){
+                heroTakePotion();
+                } else {
+                    alert('Sorry, but you used potion =(' );
+                    console.log('Sorry, but you used potion =(' );
+                }
+                break;
+            default:
+                action = prompt('Did not found that action. Please, ' + welcomeAction);
+                console.log('Did not found that action. Please, ' + welcomeAction) + action;
+
+        }
+        // Ответные действия дракона
+        alert(welcomeDragonAction);
+        const sampleDragon = getRamdomInt(100);
+        if (sampleDragon <= 50) {
+            // Вероятность Огненного шара
+            const sampleDragonFireball = getRamdomInt(2);
+            if (sampleDragonFireball === 1) {
+                dragonAttackFireBall(sampleDragonFireball);
+            } else {
+                dragonAttack(sampleDragonFireball);
+            }
+
+
+        } else {
+            dragonSleep(sampleDragon);
+        }
+        action = prompt(welcomeAction + 'again ');
+    }
+
+    // }
+    if (Dragon.hp <= 0) {
+        statusGame = 'All right, ' + user + ', you WIN. Congratulations!';
+    } else if (Hero.hp <= 0) {
+        statusGame = 'Game Over ... Dragon won you!';
+    }
+    alert(statusGame);
+    console.log(statusGame);
+    alert('Exit from game');
+    console.log('Exit from game');
+
+</script>
+</body>
+</html>

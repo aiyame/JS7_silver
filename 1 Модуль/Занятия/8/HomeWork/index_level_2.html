@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CW1 "Dragon vs. Hero"</title>
+</head>
+<body>
+<script>
+    // основные персонажи
+    var Dragon = {
+        hp: 500,      // Жизненная энергия
+        defense: 120,  // Защита
+        str: 150,      // Сила
+        weapon: 0,     // Оружие
+        showInfo: function () {
+            return 'Dragon: ' + this.hp + ' HP';
+        },
+        modifyHealth: function (damage) {
+            this.hp -= damage;
+        }
+    };
+
+    var Hero = {
+        hp: 150,       // Жизненная сила
+        defense: 100,   // Защита
+        str: 120,       // Сила
+        weapon: 250,    // Оружие
+        shield: 150,     // Щит
+        showInfo: function (username){
+            return 'Hero '  + username + ': ' + this.hp + ' HP';
+        },
+        modifyHealth: function (damage) {
+            this.hp -= damage;
+        },
+    };
+    const heroAttack = function (sampleHero) {
+        // урон = сила героя + оружие героя - защита дракона
+       let damage = Hero.str + Hero.weapon - Dragon.defense;
+        Dragon.modifyHealth(damage);
+        alert('You attacked Dragon! ' + sampleHero);
+        alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+    };
+
+    const dragonAttack = function (sampleDragon) {
+        // урон = сила дракона + оружие дракона - защита героя
+        let damage = Dragon.str + Dragon.weapon - Hero.defense;
+        Hero.modifyHealth(damage);
+        alert(user + ', Dragon attacked you!' + sampleDragon);
+        alert(Dragon.showInfo() + '\n' + Hero.showInfo(user));
+    };
+    const dragonSleep = function (sampleDragon) {
+        alert('Dragon sleeps. Use your weapon! ' + dragonEmoji + sampleDragon);
+    };
+
+    const dragonEmoji = ('=◣_◢=');
+    const welcomeAction = 'Enter the action: 1 - attack';
+    const welcomeDragonAction = 'Dragon starts his actions: Attack or Sleep ...';
+    const getRamdomInt = (max) => Math.floor(Math.random() * max + 1); // Получение вероятности
+    let damage = 0; // Урон
+
+    // Приветсвие игры
+    let user = prompt('Enter your name, please: ');
+    alert('Hello, '+ user + '! Welcome to "Dragon vs. Hero" game.');
+    let action = prompt(welcomeAction);
+
+    // Действия  игры
+    // while(true) {
+        while (Dragon.hp > 0 && Hero.hp > 0) {
+            if (action.toLowerCase().trim() === '1') {
+                const sampleHero = getRamdomInt(100);
+                if (sampleHero <= 75) {
+                    heroAttack(sampleHero);
+                }
+                else {
+                    alert('You didn\'t hit the dragon.. ' + dragonEmoji + sampleHero);
+                }
+                // Ответные действия дракона
+
+                alert(welcomeDragonAction);
+                const sampleDragon = getRamdomInt(100);
+                if (sampleDragon <= 50) {
+                    dragonAttack(sampleDragon);
+                } else {
+                    dragonSleep(sampleDragon);
+                }
+                action = prompt(welcomeAction);
+            }
+            else {
+                action = prompt('Did not found that action. Please, ' + welcomeAction);
+            }
+        }
+    // }
+    if (Dragon.hp === 0){
+        statusGame = 'All right, ' + user + ', you WIN. Congratulations!';
+    } else if (Hero.hp === 0){
+        statusGame = 'Game Over ... Dragon won you!';
+    }
+    alert(statusGame);
+    alert('Exit from cycle');
+</script>
+</body>
+</html>
